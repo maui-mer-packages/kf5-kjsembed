@@ -1,0 +1,71 @@
+Name         : kf5-kjsembed
+Version      : 4.100.0
+Release      : 1
+Group        : System/Base
+License      : GPLv2+
+Summary      : KDE Frameworks 5 Tier 3 addon with JS scripting engine
+Description  : |
+  KDE Frameworks 5 Tier 3 addon with JS scripting engine
+URL          : http://www.kde.org
+SetupOptions : -q -n %{name}-%{version}/upstream
+
+Sources:
+    - "%{name}-%{version}.tar.xz"
+
+RpmLintIgnore:
+    - devel-file-in-non-devel-package
+    - no-changelogname-tag
+    - library-without-ldconfig-postin
+    - library-without-ldconfig-postun
+
+Configure    : none
+Builder      : none
+
+PkgBR:
+    - kf5-rpm-macros
+    - extra-cmake-modules
+    - qt5-tools
+    - kf5-kjs-devel
+    - kf5-ki18n-devel
+    - kf5-kdoctools-devel
+PkgConfigBR:
+    - Qt5Core
+    - Qt5DBus
+    - Qt5Xml
+    - Qt5Network
+    - Qt5Gui
+    - Qt5Widgets
+    - Qt5Concurrent
+    - Qt5Test
+    - Qt5Svg
+Requires:
+    - kf5-filesystem
+
+RequiresPost:
+    - /sbin/ldconfig
+RequiresPostUn:
+    - /sbin/ldconfig
+
+Files:
+    - "%doc COPYING.LIB README.md"
+    - "%{_kf5_bindir}/kjscmd5"
+    - "%{_kf5_bindir}/kjsconsole"
+    - "%{_kf5_libdir}/libKF5JsEmbed.so.*"
+    - "%{_kf5_datadir}/man/man1/*"
+
+SubPackages:
+    - Name: devel
+      Group: Development/Libraries
+      Summary: Development files for %{name}
+      Description: |
+        The %{name}-devel package contains the files necessary to develop applications
+        that use %{name}.
+      Requires:
+          - kf5-kjs-devel
+          - kf5-ki18n-devel
+          - kf5-kdoctools-devel
+      Files:
+          - "%{_kf5_libdir}/libKF5JsEmbed.so"
+          - "%{_kf5_libdir}/cmake/KF5JsEmbed"
+          - "%{_kf5_includedir}/KJsEmbed/"
+          - "%{_datadir}/qt5/mkspecs/modules/*.pri"
