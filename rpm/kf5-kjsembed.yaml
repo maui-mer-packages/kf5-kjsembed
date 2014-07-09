@@ -53,6 +53,7 @@ Files:
     - "%{_kf5_bindir}/kjsconsole"
     - "%{_kf5_libdir}/libKF5JsEmbed.so.*"
     - "%{_kf5_datadir}/man/man1/*"
+FilesInput: kjsembed5_qt.lang
 
 SubPackages:
     - Name: devel

@@ -74,12 +74,13 @@ that use %{name}.
 rm -rf %{buildroot}
 # >> install pre
 %kf5_make_install
+%find_lang kjsembed5_qt --with-qt --all-name || :
 # << install pre
 
 # >> install post
 # << install post
 
-%files
+%files -f kjsembed5_qt.lang
 %defattr(-,root,root,-)
 %doc COPYING.LIB README.md
 %{_kf5_bindir}/kjscmd5
