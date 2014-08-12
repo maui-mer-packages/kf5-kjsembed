@@ -1,5 +1,5 @@
-Name         : kf5-kjsembed
-Version      : 5.0.0
+Name         : kjsembed
+Version      : 5.1.0
 Release      : 1
 Group        : System/Base
 License      : GPLv2+
@@ -25,9 +25,9 @@ PkgBR:
     - kf5-rpm-macros
     - extra-cmake-modules
     - qt5-tools
-    - kf5-kjs-devel
-    - kf5-ki18n-devel
-    - kf5-kdoctools-devel
+    - kjs-devel
+    - ki18n-devel
+    - kdoctools-devel
 PkgConfigBR:
     - Qt5Core
     - Qt5DBus
@@ -52,7 +52,7 @@ Files:
     - "%{_kf5_bindir}/kjscmd5"
     - "%{_kf5_bindir}/kjsconsole"
     - "%{_kf5_libdir}/libKF5JsEmbed.so.*"
-    - "%{_kf5_datadir}/man/man1/*"
+    - "%{_mandir}/man1/*"
 FilesInput: kjsembed5_qt.lang
 
 SubPackages:
@@ -63,11 +63,11 @@ SubPackages:
         The %{name}-devel package contains the files necessary to develop applications
         that use %{name}.
       Requires:
-          - kf5-kjs-devel
-          - kf5-ki18n-devel
-          - kf5-kdoctools-devel
+          - kjs-devel
+          - ki18n-devel
+          - kdoctools-devel
       Files:
           - "%{_kf5_libdir}/libKF5JsEmbed.so"
           - "%{_kf5_libdir}/cmake/KF5JsEmbed"
           - "%{_kf5_includedir}/KJsEmbed/"
-          - "%{_datadir}/qt5/mkspecs/modules/*.pri"
+          - "%{_kf5_mkspecsdir}/*.pri"
